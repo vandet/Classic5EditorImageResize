@@ -88,8 +88,8 @@ ClassicEditor.defaultConfig = {
 		toolbar: [
 			'imageStyle:full',
 			'imageStyle:side',
-			'|',
-			'imageResize',
+			// '|',
+			// 'imageResize',
 			'|',
 			'imageTextAlternative'
 		]
