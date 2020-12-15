@@ -21,8 +21,11 @@ import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
 import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+import ImageResizeEditing from '@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting';
+import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import Link from '@ckeditor/ckeditor5-link/src/link';
+import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
@@ -50,8 +53,11 @@ ClassicEditor.builtinPlugins = [
 	ImageToolbar,
 	ImageUpload,
 	ImageResize,
+	ImageResizeEditing,
+	ImageResizeHandles,
 	Indent,
 	Link,
+	LinkImage,
 	List,
 	MediaEmbed,
 	Paragraph,
@@ -85,13 +91,44 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	image: {
+		styles: [
+			'alignLeft', 'alignCenter', 'alignRight'
+		],
+		resizeOptions: [
+			{
+				name: 'imageResize:original',
+				label: 'Original',
+				value: null
+			},
+			{
+				name: 'imageResize:100',
+				label: '100%',
+				value: '100'
+			},
+			{
+				name: 'imageResize:75',
+				label: '75%',
+				value: '75'
+			},
+			{
+				name: 'imageResize:50',
+				label: '50%',
+				value: '50'
+			},
+			{
+				name: 'imageResize:25',
+				label: '25%',
+				value: '25'
+			}
+		],
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			// '|',
-			// 'imageResize',
+			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
 			'|',
-			'imageTextAlternative'
+			'imageResize',
+			'|',
+			'imageTextAlternative',
+			'|',
+			'linkImage'
 		]
 	},
 	table: {
@@ -101,6 +138,5 @@ ClassicEditor.defaultConfig = {
 			'mergeTableCells'
 		]
 	},
-	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
